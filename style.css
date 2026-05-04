@@ -1,3 +1,47 @@
 body {
-  background: lightblue;
+  margin: 0;
+  background: #F5F5F5;
+  color: #00010D;
+  font-family: "BenchNine", sans-serif;
+}
+
+.scenario {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.scene {
+  width: 100%;
+  max-width: 900px;
+}
+
+.scene__title {
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.scene__text {
+  margin-top: 16px;
+}
+
+.scene__buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.choice-btn {
+  background: #8E010D;
+  color: #F5F5F5;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-family: "Times New Roman", serif;
+}
+.choice-btn:hover {
+  opacity: 0.8;
 }/*# sourceMappingURL=style.css.map */
