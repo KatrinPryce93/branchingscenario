@@ -1,35 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="style.css">  
-
-    <title>Document</title>
+    <link rel="stylesheet" href="scss.css/style.css">
+    <title>Branching Scenario</title>
 </head>
-
 <body>
 
     <main class="scenario">
-    <section class="scene">
-        <img class="scene__image" src="" alt="Scene billede">
-
-        <div class="scene__content">
-            <h1 class="scene__title">Forside</h1>
-            <p class="scene__text">
-                Her kommer teksten til scenen.
-            </p>
-
-          <div class="scene__buttons">
-    <button class="choice-btn" data-choice="a">Valg A</button>
-    <button class="choice-btn" data-choice="b">Valg B</button>
-        </div>
-        </div>
-    </section>
+        <section class="scene">
+            <div class="scene__wrapper">
+                <img class="scene__image" src="img/mappe.png" alt="Forside mappe">
+                <button class="choice-btn" id="startBtn">Start sag</button>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
-</main>
-
 </body>
 </html>

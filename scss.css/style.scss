@@ -1,0 +1,98 @@
+// FARVER
+$color-dark-blue: #00010D;
+$color-light: #F5F5F5;
+$color-grey: #C8C8C1;
+$color-olive: #403E33;
+$color-red: #8E010D;
+
+// TYPOGRAFI
+$font-heading: "Times New Roman", serif;
+$font-body: "BenchNine", sans-serif;
+
+// SPACING
+$spacing-md: 16px;
+
+
+// RESET / BASE
+body {
+  margin: 0;
+  background: black; // ændret fra light til sort
+  color: $color-dark-blue;
+  font-family: $font-body;
+}
+
+
+// LAYOUT
+.scenario {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-md;
+}
+
+.scene {
+  width: 100%;
+  max-width: 900px;
+}
+
+
+// TYPOGRAFI
+.scene__title {
+  font-family: $font-heading;
+}
+
+
+// ==============================
+// FORSIDE (billede + knap)
+// ==============================
+
+
+.scene__wrapper {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.scene__image {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+}
+
+
+
+// skjul tekst (da den er i billedet)
+
+
+// knap container
+
+
+// knap styling
+.choice-btn {
+  position: absolute;
+  left: 46%;
+  top: 80%;
+  transform: translate(-50%, -50%) rotate(2deg);
+  background: $color-red;
+  color: $color-light;
+  border: 1.5px solid #fff;
+  border-radius: 2px;
+  padding: 10px 32px;
+  font-family: $font-heading;
+  font-size: 1.1rem;
+  font-weight: 400;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  letter-spacing: 1px;
+
+  &:hover {
+    background: adjust-color($color-red, $lightness: -10%);
+    color: $color-light;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
