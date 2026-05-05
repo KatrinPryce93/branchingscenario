@@ -75,16 +75,18 @@ const body = document.body;
 // Denne funktion viser en scene på siden, baseret på sceneId
 function showScene(sceneId) {
     // Skift til korktavle-baggrund
-    body.classList.add('cork-bg');
+    if (!body.classList.contains('cork-bg')) {
+        body.classList.add('cork-bg');
+    }
 
     const scene = scenes[sceneId];
 
     // Byg HTML til scenen
-    let html = `<h2 class="scene__title">${scene.title}</h2>`;
-    html += `<p class="scene__text">${scene.text}</p>`;
-    html += `<div class="scene__buttons">`;
+    let html = `<h2 class=\"scene__title\">${scene.title}</h2>`;
+    html += `<p class=\"scene__text\">${scene.text}</p>`;
+    html += `<div class=\"scene__buttons\">`;
     scene.choices.forEach((choice, i) => {
-        html += `<button class="choice-btn" data-next="${choice.nextScene}">${choice.text}</button>`;
+        html += `<button class=\"choice-btn\" data-next=\"${choice.nextScene}\">${choice.text}</button>`;
     });
     html += `</div>`;
 
@@ -108,6 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const startBtn = document.getElementById("startBtn");
     if (startBtn) {
         startBtn.addEventListener("click", function () {
+            // Skift baggrund til kork og vis scene 1
+            body.classList.add('cork-bg');
+            // Fjern forside-indholdet
+            sceneWrapper.innerHTML = "";
             showScene("scene1");
         });
     }

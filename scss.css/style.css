@@ -45,6 +45,35 @@ body {
   max-width: 600px;
   display: block;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  transform: rotate(-2deg);
+  transition: max-width 0.2s, width 0.2s, transform 0.2s;
+}
+
+#startBtn {
+  position: absolute;
+  left: 44%;
+  top: 83%;
+  transform: translate(-50%, -50%) rotate(2deg);
+  margin-top: 0;
+  width: 160px;
+  height: 40px;
+  font-size: 0.95rem;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  .scene__wrapper {
+    max-width: 95vw;
+    min-height: 200px;
+  }
+  .scene__image {
+    max-width: 95vw;
+  }
+  #startBtn {
+    width: 120px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
 }
 
 .choice-btn {
