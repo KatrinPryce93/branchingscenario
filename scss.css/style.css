@@ -1,8 +1,14 @@
+
 body {
   margin: 0;
   background: black;
   color: #00010D;
   font-family: "BenchNine", sans-serif;
+}
+
+.cork-bg {
+  background: url('../img/baggrund.png') no-repeat center center fixed !important;
+  background-size: cover !important;
 }
 
 .scenario {
@@ -24,10 +30,14 @@ body {
 
 .scene__wrapper {
   position: relative;
-  display: block;
-  width: -moz-fit-content;
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
+  min-height: 500px;
 }
 
 .scene__image {
@@ -38,10 +48,7 @@ body {
 }
 
 .choice-btn {
-  position: absolute;
-  left: 46%;
-  top: 80%;
-  transform: translate(-50%, -50%) rotate(2deg);
+  margin-top: 32px;
   background: #8E010D;
   color: #F5F5F5;
   border: 1.5px solid #fff;

@@ -1,3 +1,4 @@
+// Her definerer vi alle scenerne i spillet (dette er "dataen" for scenariet)
 const scenes = {
     start: {
         title: "Forside",
@@ -67,29 +68,47 @@ const scenes = {
     }
 };
 
-const title = document.querySelector(".scene__title");
-const text = document.querySelector(".scene__text");
-const buttonsContainer = document.querySelector(".scene__buttons");
+// Her finder vi wrapperen hvor vi viser scenerne
+const sceneWrapper = document.getElementById("sceneWrapper");
+const body = document.body;
 
+// Denne funktion viser en scene på siden, baseret på sceneId
 function showScene(sceneId) {
+    // Skift til korktavle-baggrund
+    body.classList.add('cork-bg');
+
     const scene = scenes[sceneId];
 
-    title.textContent = scene.title;
-    text.textContent = scene.text;
+    // Byg HTML til scenen
+    let html = `<h2 class="scene__title">${scene.title}</h2>`;
+    html += `<p class="scene__text">${scene.text}</p>`;
+    html += `<div class="scene__buttons">`;
+    scene.choices.forEach((choice, i) => {
+        html += `<button class="choice-btn" data-next="${choice.nextScene}">${choice.text}</button>`;
+    });
+    html += `</div>`;
 
-    buttonsContainer.innerHTML = "";
+    sceneWrapper.innerHTML = html;
 
-    scene.choices.forEach(choice => {
-        const button = document.createElement("button");
-        button.textContent = choice.text;
-        button.classList.add("choice-btn");
-
-        button.addEventListener("click", function () {
-            showScene(choice.nextScene);
+    // Tilføj event listeners til knapper
+    const btns = sceneWrapper.querySelectorAll(".choice-btn");
+    btns.forEach(btn => {
+        btn.addEventListener("click", function () {
+            const next = btn.getAttribute("data-next");
+            showScene(next);
         });
-
-        buttonsContainer.appendChild(button);
     });
 }
 
-showScene("start");
+// Forside: ingen korktavle-baggrund
+body.classList.remove('cork-bg');
+
+// Tilføj event til start-knappen, så vi først viser scenariet og skifter baggrund når der klikkes
+document.addEventListener('DOMContentLoaded', function() {
+    const startBtn = document.getElementById("startBtn");
+    if (startBtn) {
+        startBtn.addEventListener("click", function () {
+            showScene("scene1");
+        });
+    }
+});
