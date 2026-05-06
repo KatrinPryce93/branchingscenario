@@ -1,120 +1,194 @@
-// Her definerer vi alle scenerne i spillet (dette er "dataen" for scenariet)
+const sceneContainer = document.getElementById("scene");
+
 const scenes = {
-    start: {
-        title: "Forside",
-        text: "Intro til det forgrenede scenarie.",
-        choices: [
-            { text: "Start efterforskning", nextScene: "scene1" }
-        ]
-    },
 
-    scene1: {
-        title: "Scene 1",
-        text: "Du skal nu vælge, hvad du vil gøre.",
-        choices: [
-            { text: "Valg 2A", nextScene: "scene2A" },
-            { text: "Valg 2B", nextScene: "scene2B" }
-        ]
-    },
+  start: {
+    image: "img/mappe.png",
+    background: "start-bg",
+    buttonClass: "start-btn",
+    choices: [
+      {
+        text: "Start sag",
+        nextScene: "scene1"
+      }
+    ]
+  },
 
-    scene2A: {
-        title: "Scene 2A",
-        text: "Du valgte vej 2A. Hvad gør du nu?",
-        choices: [
-            { text: "Valg A1", nextScene: "endingA1" },
-            { text: "Valg A2", nextScene: "endingA2" }
-        ]
-    },
+  scene1: {
+    image: "img/scene.1.png",
+    background: "cork-bg",
+    pin: true,
+    buttonClass: "scene1-buttons",
+    choices: [
+      {
+        text: "Log ind via linket",
+        nextScene: "scene2A"
+      },
+      {
+        text: "Gå direkte til skolens hjemmeside",
+        nextScene: "scene2B"
+      }
+    ]
+  },
 
-    scene2B: {
-        title: "Scene 2B",
-        text: "Du valgte vej 2B. Hvad gør du nu?",
-        choices: [
-            { text: "Valg B1", nextScene: "endingB1" },
-            { text: "Valg B2", nextScene: "endingB2" }
-        ]
-    },
+  scene2A: {
+    image: "img/scene.2a.png",
+    decor: "img/decor.2a.png",
+    pin: true,
+    background: "cork-bg",
+    buttonClass: "scene2A-buttons",
+    choices: [
+      {
+        text: "Ignorer problemet",
+        nextScene: "endingA1"
+      },
+      {
+        text: "Skift adgangskode og rapportér",
+        nextScene: "endingA2"
+      }
+    ]
+  },
 
-    endingA1: {
-        title: "Slutning A1",
-        text: "Dette er slutning A1.",
-        choices: [
-            { text: "Prøv igen", nextScene: "start" }
-        ]
-    },
+  scene2B: {
+    image: "img/scene.2b.png",
+    decor: "img/decor.2b.png",
+    pin: true,
+    background: "cork-bg",
+    buttonClass: "scene2B-buttons",
+    choices: [
+      {
+        text: "Del koden",
+        nextScene: "endingB1"
+      },
+      {
+        text: "Ignorér beskeden",
+        nextScene: "endingB2"
+      }
+    ]
+  },
 
-    endingA2: {
-        title: "Slutning A2",
-        text: "Dette er slutning A2.",
-        choices: [
-            { text: "Prøv igen", nextScene: "start" }
-        ]
-    },
+  endingA1: {
+    image: "img/slutning.a1.png",
+    sticky: "img/stickynote.a1.png",
+    background: "cork-bg",
+    buttonClass: "ending-btn",
+    choices: [
+      {
+        text: "Prøv igen",
+        nextScene: "start"
+      }
+    ]
+  },
 
-    endingB1: {
-        title: "Slutning B1",
-        text: "Dette er slutning B1.",
-        choices: [
-            { text: "Prøv igen", nextScene: "start" }
-        ]
-    },
+  endingA2: {
+    image: "img/slutning.a2.png",
+    sticky: "img/stickynote.a2.png",
+    background: "cork-bg",
+    buttonClass: "ending-btn",
+    choices: [
+      {
+        text: "Prøv igen",
+        nextScene: "start"
+      }
+    ]
+  },
 
-    endingB2: {
-        title: "Slutning B2",
-        text: "Dette er slutning B2.",
-        choices: [
-            { text: "Prøv igen", nextScene: "start" }
-        ]
-    }
+  endingB1: {
+    image: "img/slutning.b1.png",
+    sticky: "img/stickynote.b1.png",
+    background: "cork-bg",
+    buttonClass: "ending-btn",
+    choices: [
+      {
+        text: "Prøv igen",
+        nextScene: "start"
+      }
+    ]
+  },
+
+  endingB2: {
+    image: "img/slutning.b2.png",
+    sticky: "img/stickynote.b2.png",
+    background: "cork-bg",
+    buttonClass: "ending-btn",
+    choices: [
+      {
+        text: "Prøv igen",
+        nextScene: "start"
+      }
+    ]
+  }
+
 };
 
-// Her finder vi wrapperen hvor vi viser scenerne
-const sceneWrapper = document.getElementById("sceneWrapper");
-const body = document.body;
+function renderScene(sceneKey) {
 
-// Denne funktion viser en scene på siden, baseret på sceneId
-function showScene(sceneId) {
-    // Skift til korktavle-baggrund
-    if (!body.classList.contains('cork-bg')) {
-        body.classList.add('cork-bg');
-    }
+  const currentScene = scenes[sceneKey];
 
-    const scene = scenes[sceneId];
+  document.body.className = currentScene.background;
 
-    // Byg HTML til scenen
-    let html = `<h2 class=\"scene__title\">${scene.title}</h2>`;
-    html += `<p class=\"scene__text\">${scene.text}</p>`;
-    html += `<div class=\"scene__buttons\">`;
-    scene.choices.forEach((choice, i) => {
-        html += `<button class=\"choice-btn\" data-next=\"${choice.nextScene}\">${choice.text}</button>`;
+  let buttonsHTML = "";
+
+  currentScene.choices.forEach(choice => {
+
+    buttonsHTML += `
+      <button 
+        class="choice-btn"
+        data-next="${choice.nextScene}">
+        ${choice.text}
+      </button>
+    `;
+  });
+
+  sceneContainer.innerHTML = `
+  
+    <div class="scene__wrapper">
+
+      <img 
+        class="scene__image" 
+        src="${currentScene.image}"
+      >
+
+      ${
+        currentScene.decor
+          ? `<img class="decor" src="${currentScene.decor}">`
+          : ""
+      }
+
+      ${
+        currentScene.sticky
+          ? `<img class="decor" src="${currentScene.sticky}">`
+          : ""
+      }
+
+      ${
+        currentScene.pin
+          ? `<img class="pin" src="img/knappenaal.png">`
+          : ""
+      }
+
+      <div class="buttons ${currentScene.buttonClass}">
+        ${buttonsHTML}
+      </div>
+
+    </div>
+  
+  `;
+
+  const buttons = document.querySelectorAll(".choice-btn");
+
+  buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const nextScene = button.dataset.next;
+
+      renderScene(nextScene);
+
     });
-    html += `</div>`;
 
-    sceneWrapper.innerHTML = html;
+  });
 
-    // Tilføj event listeners til knapper
-    const btns = sceneWrapper.querySelectorAll(".choice-btn");
-    btns.forEach(btn => {
-        btn.addEventListener("click", function () {
-            const next = btn.getAttribute("data-next");
-            showScene(next);
-        });
-    });
 }
 
-// Forside: ingen korktavle-baggrund
-body.classList.remove('cork-bg');
-
-// Tilføj event til start-knappen, så vi først viser scenariet og skifter baggrund når der klikkes
-document.addEventListener('DOMContentLoaded', function() {
-    const startBtn = document.getElementById("startBtn");
-    if (startBtn) {
-        startBtn.addEventListener("click", function () {
-            // Skift baggrund til kork og vis scene 1
-            body.classList.add('cork-bg');
-            // Fjern forside-indholdet
-            sceneWrapper.innerHTML = "";
-            showScene("scene1");
-        });
-    }
-});
+renderScene("start");

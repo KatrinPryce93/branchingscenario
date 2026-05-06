@@ -1,98 +1,189 @@
+// ====================================
 // FARVER
-$color-dark-blue: #00010D;
-$color-light: #F5F5F5;
-$color-grey: #C8C8C1;
-$color-olive: #403E33;
+// ====================================
+
 $color-red: #8E010D;
+$color-light: #F5F5F5;
 
+
+// ====================================
 // TYPOGRAFI
+// ====================================
+
 $font-heading: "Times New Roman", serif;
-$font-body: "BenchNine", sans-serif;
-
-// SPACING
-$spacing-md: 16px;
 
 
+// ====================================
 // RESET / BASE
+// ====================================
+
 body {
   margin: 0;
-  background: black; // ændret fra light til sort
-  color: $color-dark-blue;
-  font-family: $font-body;
+  font-family: $font-heading;
 }
 
 
+// ====================================
+// BAGGRUNDE
+// ====================================
+
+.start-bg {
+  background: black;
+}
+
+.cork-bg {
+  background: url("../img/baggrund.png") center center / cover no-repeat fixed;
+}
+
+
+// ====================================
 // LAYOUT
+// ====================================
+
 .scenario {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $spacing-md;
 }
 
 .scene {
   width: 100%;
-  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
-// TYPOGRAFI
-.scene__title {
-  font-family: $font-heading;
-}
-
-
-// ==============================
-// FORSIDE (billede + knap)
-// ==============================
-
+// ====================================
+// SCENE WRAPPER
+// ====================================
 
 .scene__wrapper {
   position: relative;
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
+  display: inline-block;
 }
+
+
+// ====================================
+// BILLEDER
+// ====================================
 
 .scene__image {
-  width: 100%;
-  max-width: 600px;
+  width: 900px;
+  max-width: 95vw;
   display: block;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
 }
 
 
+// ====================================
+// DEKORATIONER
+// ====================================
 
-// skjul tekst (da den er i billedet)
-
-
-// knap container
-
-
-// knap styling
-.choice-btn {
+.decor {
   position: absolute;
-  left: 46%;
-  top: 80%;
-  transform: translate(-50%, -50%) rotate(2deg);
+  width: 220px;
+  right: -40px;
+  bottom: -20px;
+}
+
+.pin {
+  position: absolute;
+  width: 40px;
+  top: 120px;
+  right: 160px;
+}
+
+
+// ====================================
+// KNAPPER
+// ====================================
+
+.buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+// Forside-knap
+.start-btn {
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+// Scene 1 knapper
+.scene1-buttons {
+  top: 220px;
+  right: 70px;
+}
+
+
+// Scene 2A knapper
+.scene2A-buttons {
+  top: 170px;
+  right: 40px;
+}
+
+
+// Scene 2B knapper
+.scene2B-buttons {
+  top: 240px;
+  right: 40px;
+}
+
+
+// Slutninger
+.ending-btn {
+  bottom: 60px;
+  right: 50px;
+}
+
+
+// ====================================
+// KNAP DESIGN
+// ====================================
+
+.choice-btn {
   background: $color-red;
   color: $color-light;
-  border: 1.5px solid #fff;
-  border-radius: 2px;
-  padding: 10px 32px;
+  border: 1px solid white;
+  padding: 12px 22px;
   font-family: $font-heading;
-  font-size: 1.1rem;
-  font-weight: 400;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-size: 16px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
-  letter-spacing: 1px;
+  transition: 0.2s;
+}
 
-  &:hover {
-    background: adjust-color($color-red, $lightness: -10%);
-    color: $color-light;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-    transform: translate(-50%, -50%) rotate(0deg);
+.choice-btn:hover {
+  transform: scale(1.05);
+}
+
+
+// ====================================
+// RESPONSIVE
+// ====================================
+
+@media (max-width: 800px) {
+
+  .scene__image {
+    width: 100%;
+  }
+
+  .buttons {
+    transform: scale(0.9);
+  }
+
+  .scene1-buttons,
+  .scene2A-buttons,
+  .scene2B-buttons {
+    right: 10px;
+  }
+
+  .decor {
+    width: 140px;
   }
 }

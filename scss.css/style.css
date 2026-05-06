@@ -1,14 +1,14 @@
-
 body {
   margin: 0;
+  font-family: "Times New Roman", serif;
+}
+
+.start-bg {
   background: black;
-  color: #00010D;
-  font-family: "BenchNine", sans-serif;
 }
 
 .cork-bg {
-  background: url('../img/baggrund.png') no-repeat center center fixed !important;
-  background-size: cover !important;
+  background: url("../img/baggrund.png") center center/cover no-repeat fixed;
 }
 
 .scenario {
@@ -16,84 +16,101 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
 }
 
 .scene {
   width: 100%;
-  max-width: 900px;
-}
-
-.scene__title {
-  font-family: "Times New Roman", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .scene__wrapper {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 500px;
+  display: inline-block;
 }
 
 .scene__image {
-  width: 100%;
-  max-width: 600px;
+  width: 900px;
+  max-width: 95vw;
   display: block;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
-  transform: rotate(-2deg);
-  transition: max-width 0.2s, width 0.2s, transform 0.2s;
 }
 
-#startBtn {
+.decor {
   position: absolute;
-  left: 44%;
-  top: 83%;
-  transform: translate(-50%, -50%) rotate(2deg);
-  margin-top: 0;
-  width: 160px;
-  height: 40px;
-  font-size: 0.95rem;
-  z-index: 2;
+  width: 220px;
+  right: -40px;
+  bottom: -20px;
 }
 
-@media (max-width: 700px) {
-  .scene__wrapper {
-    max-width: 95vw;
-    min-height: 200px;
-  }
-  .scene__image {
-    max-width: 95vw;
-  }
-  #startBtn {
-    width: 120px;
-    height: 38px;
-    font-size: 0.9rem;
-  }
+.pin {
+  position: absolute;
+  width: 40px;
+  top: 120px;
+  right: 160px;
+}
+
+.buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.start-btn {
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scene1-buttons {
+  top: 220px;
+  right: 70px;
+}
+
+.scene2A-buttons {
+  top: 170px;
+  right: 40px;
+}
+
+.scene2B-buttons {
+  top: 240px;
+  right: 40px;
+}
+
+.ending-btn {
+  bottom: 60px;
+  right: 50px;
 }
 
 .choice-btn {
-  margin-top: 32px;
   background: #8E010D;
   color: #F5F5F5;
-  border: 1.5px solid #fff;
-  border-radius: 2px;
-  padding: 10px 32px;
+  border: 1px solid white;
+  padding: 12px 22px;
   font-family: "Times New Roman", serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
-  letter-spacing: 1px;
+  transition: 0.2s;
 }
+
 .choice-btn:hover {
-  background: rgb(91.3566433566, 0.6433566434, 8.3636363636);
-  color: #F5F5F5;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-  transform: translate(-50%, -50%) rotate(0deg);
+  transform: scale(1.05);
+}
+
+@media (max-width: 800px) {
+  .scene__image {
+    width: 100%;
+  }
+  .buttons {
+    transform: scale(0.9);
+  }
+  .scene1-buttons,
+  .scene2A-buttons,
+  .scene2B-buttons {
+    right: 10px;
+  }
+  .decor {
+    width: 140px;
+  }
 }/*# sourceMappingURL=style.css.map */
