@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "Times New Roman", serif;
+  overflow: hidden;
 }
 
 .start-bg {
@@ -12,7 +13,7 @@ body {
 }
 
 .scenario {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,97 +21,111 @@ body {
 
 .scene {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
 }
 
 .scene__wrapper {
   position: relative;
-  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 
 .scene__image {
-  width: 900px;
-  max-width: 95vw;
+  position: absolute;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 52vw;
+  max-height: 70vh;
   display: block;
 }
 
-.decor {
+.scene--start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene--start .scene__wrapper {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.scene--start .scene__image {
+  position: static;
+  transform: rotate(1deg);
+  width: 650px;
+  max-width: 90vw;
+  max-height: 86vh;
+  display: block;
+}
+.scene--start .scene__buttons {
   position: absolute;
-  width: 220px;
-  right: -40px;
-  bottom: -20px;
+  left: 47%;
+  top: 82%;
+  transform: translate(-50%, -50%) rotate(2deg);
+}
+.scene--start .choice-btn {
+  font-size: 18px;
+  padding: 10px 28px;
+  min-width: 160px;
+}
+.scene--start .choice-btn:hover {
+  transform: scale(1.05);
 }
 
-.pin {
+.scene__buttons {
   position: absolute;
-  width: 40px;
-  top: 120px;
-  right: 160px;
-}
-
-.buttons {
-  position: absolute;
+  left: 68%;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.start-btn {
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.scene1-buttons {
-  top: 220px;
-  right: 70px;
-}
-
-.scene2A-buttons {
-  top: 170px;
-  right: 40px;
-}
-
-.scene2B-buttons {
-  top: 240px;
-  right: 40px;
-}
-
-.ending-btn {
-  bottom: 60px;
-  right: 50px;
+  gap: 24px;
 }
 
 .choice-btn {
   background: #8E010D;
   color: #F5F5F5;
-  border: 1px solid white;
-  padding: 12px 22px;
+  border: 1.5px solid white;
+  padding: 14px 30px;
+  min-width: 250px;
   font-family: "Times New Roman", serif;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
-  transition: 0.2s;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
-
 .choice-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.65);
+  opacity: 0.95;
 }
 
-@media (max-width: 800px) {
+.scene--endingA1 .scene__buttons,
+.scene--endingA2 .scene__buttons,
+.scene--endingB1 .scene__buttons,
+.scene--endingB2 .scene__buttons {
+  left: 68%;
+  top: 58%;
+}
+
+@media (max-width: 900px) {
   .scene__image {
-    width: 100%;
+    left: 5%;
+    max-width: 58vw;
+    max-height: 65vh;
   }
-  .buttons {
-    transform: scale(0.9);
+  .scene__buttons {
+    left: 65%;
   }
-  .scene1-buttons,
-  .scene2A-buttons,
-  .scene2B-buttons {
-    right: 10px;
+  .choice-btn {
+    min-width: 180px;
+    font-size: 14px;
+    padding: 10px 18px;
   }
-  .decor {
-    width: 140px;
+  .scene--start .scene__image {
+    max-width: 390px;
   }
 }/*# sourceMappingURL=style.css.map */
