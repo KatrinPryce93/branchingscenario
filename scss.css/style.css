@@ -71,9 +71,6 @@ body {
   padding: 10px 28px;
   min-width: 160px;
 }
-.scene--start .choice-btn:hover {
-  transform: scale(1.05);
-}
 
 .scene__buttons {
   position: absolute;
@@ -86,8 +83,9 @@ body {
 }
 
 .choice-btn {
-  background: #8E010D;
-  color: #F5F5F5;
+  position: relative;
+  background: #6E010D;
+  color: #F0F2F2;
   border: 1.5px solid white;
   padding: 14px 30px;
   min-width: 250px;
@@ -97,10 +95,28 @@ body {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
+.choice-btn::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: -85px;
+  left: -32px;
+  background-image: url("../img/knappenaal.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
 .choice-btn:hover {
   transform: scale(1.06);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.65);
   opacity: 0.95;
+}
+
+.scene--start .choice-btn::before {
+  display: none;
 }
 
 .scene--endingA1 .scene__buttons,

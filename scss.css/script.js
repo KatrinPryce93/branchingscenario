@@ -22,8 +22,8 @@ const scenes = {
     image: "img/scene.2a.png",
     background: "cork-bg",
     choices: [
-      { text: "Ignorer problemet", nextScene: "endingA1" },
-      { text: "Skift adgangskode og rapportér", nextScene: "endingA2" }
+      { text: "Se om det går over af sig selv", nextScene: "endingA1" },
+      { text: "Skift kode + kontakt IT-support", nextScene: "endingA2" }
     ]
   },
 
@@ -31,8 +31,8 @@ const scenes = {
     image: "img/scene.2b.png",
     background: "cork-bg",
     choices: [
-      { text: "Del koden", nextScene: "endingB1" },
-      { text: "Ignorér beskeden", nextScene: "endingB2" }
+      { text: "Indtast koden på siden fra mailen", nextScene: "endingB1" },
+      { text: "Ignorér og log ind normalt senere", nextScene: "endingB2" }
     ]
   },
 

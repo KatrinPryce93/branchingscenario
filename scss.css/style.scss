@@ -1,6 +1,6 @@
 // FARVER
-$color-red: #8E010D;
-$color-light: #F5F5F5;
+$color-red: #6E010D;
+$color-light: #F0F2F2;
 
 // TYPOGRAFI
 $font-heading: "Times New Roman", serif;
@@ -50,7 +50,6 @@ body {
   display: block;
 }
 
-
 // FORSIDE
 .scene--start {
   display: flex;
@@ -83,10 +82,6 @@ body {
     font-size: 18px;
     padding: 10px 28px;
     min-width: 160px;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   }
 }
 
@@ -102,6 +97,7 @@ body {
 }
 
 .choice-btn {
+  position: relative;
   background: $color-red;
   color: $color-light;
   border: 1.5px solid white;
@@ -113,10 +109,38 @@ body {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 
+  // KNAPPENÅL PÅ ALLE KNAPPER
+&::before {
+  content: "";
+
+  position: absolute;
+
+  width: 140px;
+  height: 140px;
+
+ top: -85px;
+left: -32px;
+
+  background-image: url("../img/knappenaal.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+
+  pointer-events: none;
+  z-index: 10;
+}
+
   &:hover {
     transform: scale(1.06);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.65);
     opacity: 0.95;
+  }
+}
+
+// Fjern knappenål fra forsiden
+.scene--start {
+  .choice-btn::before {
+    display: none;
   }
 }
 
