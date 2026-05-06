@@ -38,6 +38,7 @@ const scenes = {
 
   endingA1: {
     image: "img/slutning.a1.png",
+    sticky: "img/stickynote.a1.png",
     background: "cork-bg",
     choices: [
       { text: "Prøv igen", nextScene: "start" }
@@ -46,6 +47,7 @@ const scenes = {
 
   endingA2: {
     image: "img/slutning.a2.png",
+    sticky: "img/stickynote.a2.png",
     background: "cork-bg",
     choices: [
       { text: "Prøv igen", nextScene: "start" }
@@ -54,6 +56,7 @@ const scenes = {
 
   endingB1: {
     image: "img/slutning.b1.png",
+    sticky: "img/stickynote.b1.png",
     background: "cork-bg",
     choices: [
       { text: "Prøv igen", nextScene: "start" }
@@ -62,6 +65,7 @@ const scenes = {
 
   endingB2: {
     image: "img/slutning.b2.png",
+    sticky: "img/stickynote.b2.png",
     background: "cork-bg",
     choices: [
       { text: "Prøv igen", nextScene: "start" }
@@ -84,6 +88,8 @@ function renderScene(sceneKey) {
   sceneContainer.innerHTML = `
     <div class="scene__wrapper">
       <img class="scene__image" src="${currentScene.image}" alt="">
+
+      ${currentScene.sticky ? `<img class="scene__sticky" src="${currentScene.sticky}" alt="">` : ""}
 
       <div class="scene__buttons">
         ${buttonsHTML}

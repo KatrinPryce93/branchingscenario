@@ -119,12 +119,38 @@ body {
   display: none;
 }
 
+.scene__sticky {
+  position: absolute;
+  right: 8%;
+  top: 22%;
+  width: 330px;
+  max-width: 30vw;
+  z-index: 3;
+}
+
+.scene--endingA1 .scene__image,
+.scene--endingA2 .scene__image,
+.scene--endingB1 .scene__image,
+.scene--endingB2 .scene__image {
+  left: 8%;
+  max-width: 48vw;
+  max-height: 76vh;
+}
+.scene--endingA1 .scene__sticky,
+.scene--endingA2 .scene__sticky,
+.scene--endingB1 .scene__sticky,
+.scene--endingB2 .scene__sticky {
+  right: 8%;
+  top: 20%;
+}
 .scene--endingA1 .scene__buttons,
 .scene--endingA2 .scene__buttons,
 .scene--endingB1 .scene__buttons,
 .scene--endingB2 .scene__buttons {
-  left: 68%;
-  top: 58%;
+  left: auto;
+  right: 13%;
+  top: 72%;
+  transform: none;
 }
 
 @media (max-width: 900px) {
@@ -140,6 +166,10 @@ body {
     min-width: 180px;
     font-size: 14px;
     padding: 10px 18px;
+  }
+  .scene__sticky {
+    width: 220px;
+    right: 5%;
   }
   .scene--start .scene__image {
     max-width: 390px;
