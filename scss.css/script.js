@@ -74,9 +74,11 @@ const scenes = {
 };
 
 function renderScene(sceneKey) {
+
   const currentScene = scenes[sceneKey];
 
   document.body.className = currentScene.background;
+
   sceneContainer.className = `scene scene--${sceneKey}`;
 
   const buttonsHTML = currentScene.choices.map(choice => `
@@ -87,23 +89,57 @@ function renderScene(sceneKey) {
 
   sceneContainer.innerHTML = `
     <div class="scene__wrapper">
-      <img class="scene__image" src="${currentScene.image}" alt="">
 
-      ${currentScene.sticky ? `<img class="scene__sticky" src="${currentScene.sticky}" alt="">` : ""}
+      <img 
+        class="scene__image" 
+        src="${currentScene.image}" 
+        alt=""
+      >
+
+      ${
+        currentScene.sticky
+          ? `<img class="scene__sticky" src="${currentScene.sticky}" alt="">`
+          : ""
+      }
 
       <div class="scene__buttons">
         ${buttonsHTML}
       </div>
+
     </div>
   `;
 
   const buttons = document.querySelectorAll(".choice-btn");
 
   buttons.forEach(button => {
+
     button.addEventListener("click", () => {
+
       renderScene(button.dataset.next);
+
     });
+
   });
+
 }
 
 renderScene("start");
+
+
+// ==============================
+// BAGGRUNDSMUSIK
+// ==============================
+
+const music = document.getElementById("bg-music");
+
+if (music) {
+
+  music.volume = 0.18;
+
+  document.body.addEventListener("click", () => {
+
+    music.play();
+
+  }, { once: true });
+
+}
